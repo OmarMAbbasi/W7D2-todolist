@@ -1,14 +1,22 @@
 import React from "react";
-import todoListItem from "../todo_list/todo_list_item";
-import todos from "./todo_list_container";
+import TodoListItem from "./todo_list_item";
+// import TodoForm from "./todo_form";  
 
 
-const toDoList = () => (
-  <ul>
-   {todos.todos.map((todo) => {
-     <li>{todo}</li>
-   })}
- </ul>
-)
+class ToDoList extends React.Component {
+  render() {
+    const {todos} = this.props
+    const todoList = todos.map((todo) => (
+      <TodoListItem
+        key={todo.id}
+        todo={todo} />
+    ));
+    return (
+      <ul>
+        {todoList}
+      </ul>
+    );
+  }
+}
 
-export default toDoList;
+export default ToDoList;
